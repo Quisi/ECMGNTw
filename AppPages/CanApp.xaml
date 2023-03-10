@@ -1,0 +1,125 @@
+﻿<Page
+    x:Class="EnergyScanVerwaltung.AppPages.CanApp"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:EnergyScanVerwaltung"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:dtos="using:EnergyScanVerwaltung.DTOs"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    ScrollViewer.HorizontalScrollBarVisibility="Visible" ScrollViewer.HorizontalScrollMode="Enabled">
+
+    <Grid ScrollViewer.HorizontalScrollMode="Enabled" ScrollViewer.BringIntoViewOnFocusChange="True" ScrollViewer.HorizontalScrollBarVisibility="Visible">
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top">
+            <TextBlock x:Name="CansAppTitle" Text="Cans" FontSize="48" MinWidth="675" />
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,32,12,0">
+                <TextBlock x:Name="CanAdd" Text="Add" HorizontalAlignment="Right" VerticalAlignment="Center" />
+                <Button Width="50" Height="50" x:Name="CanAddButton" Margin="12,0,0,0" ToolTipService.ToolTip="Add" Click="CanAddButton_Click"  HorizontalContentAlignment="Center" HorizontalAlignment="Right" >
+                    <Image Source="../Assets/icon_add.png" x:Name="img_add" HorizontalAlignment="Center"/>
+                </Button>
+            </StackPanel>
+
+            <StackPanel MinWidth="{x:Bind CansAppTitle.MinWidth}" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,12,0,12" BorderBrush="Silver" BorderThickness="0,0,0,1">
+                <TextBlock Text="Cans:" Margin="12"  TextAlignment="Left" FontWeight="Bold" TextWrapping="Wrap" />
+                <TextBlock Text="{x:Bind Cans.Count}" Margin="0,12,12,12" TextAlignment="Left" FontWeight="Bold" TextWrapping="Wrap" />
+            </StackPanel>
+            <ListView x:Name="XListview" ItemsSource="{x:Bind Cans}" HorizontalAlignment="Center" VerticalAlignment="Center" IsSwipeEnabled="False" SelectionMode="None" AllowFocusWhenDisabled="True" IsMultiSelectCheckBoxEnabled="False">
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="dtos:CanDTO">
+                        <StackPanel Orientation="Vertical" BorderBrush="Silver" BorderThickness="0,0,0,1" Margin="0,8" Padding="0,8" >
+                            <StackPanel Orientation="Horizontal"  Margin="4">
+                                <TextBlock Width="300" Text="Manufacturer"  TextAlignment="Left" TextWrapping="Wrap" IsTextSelectionEnabled="True" />
+                                <TextBlock Width="300" Text="{x:Bind Manufacturer.Name}"  TextAlignment="Left" TextWrapping="Wrap" IsTextSelectionEnabled="True" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal"  Margin="4">
+                                <TextBlock Width="300" Text="Taste"  TextAlignment="Left" TextWrapping="Wrap" IsTextSelectionEnabled="True" />
+                                <TextBlock Width="300" Text="{x:Bind Taste.Name}"  TextAlignment="Left" TextWrapping="Wrap" IsTextSelectionEnabled="True" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal"  Margin="4">
+                                <TextBlock Width="300" Text="Contentamount"  TextAlignment="Left" TextWrapping="Wrap" IsTextSelectionEnabled="True" />
+                                <TextBlock Width="300" Text="{x:Bind Contentamount}"  TextAlignment="Left" TextWrapping="Wrap" IsTextSelectionEnabled="True" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal"  Margin="4">
+                                <TextBlock Width="300" Text="Status"  TextAlignment="Left" TextWrapping="Wrap" IsTextSelectionEnabled="True" />
+                                <TextBlock Width="300" Text="{x:Bind Status.Name}"  TextAlignment="Left" TextWrapping="Wrap" IsTextSelectionEnabled="True" />
+                            </StackPanel>
+                            
+                            <StackPanel Orientation="Horizontal" Margin="4,0">
+                                <TextBlock Width="300" Text="Cans" VerticalAlignment="Center" TextAlignment="Left" TextWrapping="Wrap" Margin="0" IsTextSelectionEnabled="True"/>
+                                <ListView x:Name="BListview" ItemsSource="{x:Bind Barcodes}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="-12,0,0,0" SelectionMode="None">
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate x:DataType="dtos:BarcodeDTO">
+                                            <TextBlock Width="300" Text="{x:Bind Name}" Margin="0" Padding="0" TextAlignment="Left" TextWrapping="Wrap" IsTextSelectionEnabled="True" />
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                </ListView>
+                            </StackPanel>
+                            
+                            <StackPanel Orientation="Horizontal"  Margin="4">
+                                <TextBlock Width="300" Text="Country"  TextAlignment="Left" TextWrapping="Wrap" IsTextSelectionEnabled="True" />
+                                <TextBlock Width="300" Text="{x:Bind Country.Name}"  TextAlignment="Left" TextWrapping="Wrap" IsTextSelectionEnabled="True" />
+                            </StackPanel>
+
+                            
+                            <StackPanel Orientation="Horizontal"  Margin="4">
+                                <TextBlock Width="300" Text="Coffeincontent"  TextAlignment="Left" TextWrapping="Wrap" IsTextSelectionEnabled="True" />
+                                <TextBlock Width="300" Text="{x:Bind Coffeincontent}"  TextAlignment="Left" TextWrapping="Wrap" IsTextSelectionEnabled="True" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal"  Margin="4">
+                                <TextBlock Width="300" Text="MHD" TextAlignment="Left" TextWrapping="Wrap" IsTextSelectionEnabled="True" />
+                                <TextBlock Width="300" Text="{x:Bind Mhd}"  TextAlignment="Left" TextWrapping="Wrap" IsTextSelectionEnabled="True" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal"  Margin="4">
+                                <TextBlock Width="300" Text="Closure" TextAlignment="Left" TextWrapping="Wrap" IsTextSelectionEnabled="True" />
+                                <TextBlock Width="300" Text="{x:Bind Closure}"  TextAlignment="Left" TextWrapping="Wrap" IsTextSelectionEnabled="True" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal"  Margin="4">
+                                <TextBlock Width="300" Text="Deposit" TextAlignment="Left" TextWrapping="Wrap" IsTextSelectionEnabled="True" />
+                                <CheckBox Margin="0,0,-90,0" IsChecked="{x:Bind Deposit}" IsEnabled="False" />
+                                <TextBlock Width="300" Text="{x:Bind Deposit}"  TextAlignment="Left" TextWrapping="Wrap" IsTextSelectionEnabled="True" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal"  Margin="4">
+                                <TextBlock Width="300" Text="Damaged"  TextAlignment="Left" TextWrapping="Wrap" IsTextSelectionEnabled="True" />
+                                <CheckBox Margin="0,0,-90,0" IsChecked="{x:Bind Damaged}" IsEnabled="False" />
+                                <TextBlock MinWidth="100" Text="{x:Bind Damaged}"  TextAlignment="Left" TextWrapping="Wrap" IsTextSelectionEnabled="True" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal"  Margin="4">
+                                <TextBlock Width="300" Text="Description"  TextAlignment="Left" TextWrapping="Wrap" IsTextSelectionEnabled="True" />
+                                <TextBlock Width="300" Text="{x:Bind Description}"  TextAlignment="Left" TextWrapping="Wrap" IsTextSelectionEnabled="True" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal"  Margin="4">
+                                <TextBlock Width="300" Text="Tags" TextAlignment="Left" TextWrapping="Wrap" IsTextSelectionEnabled="True" />
+                                <ListView x:Name="TListview" ItemsSource="{x:Bind Tags}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="-12,0,0,0">
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate x:DataType="dtos:TagDTO">
+                                            <TextBlock Width="300" Text="{x:Bind Name}"  TextAlignment="Left" TextWrapping="Wrap" IsTextSelectionEnabled="True" />
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                </ListView>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="4">
+                                <TextBlock Width="300" Text="Id"  TextAlignment="Left" TextWrapping="Wrap" IsTextSelectionEnabled="True" />
+                                <TextBlock Width="300" Text="{x:Bind Id}"  TextAlignment="Left" TextWrapping="Wrap" IsTextSelectionEnabled="True" />
+                            </StackPanel>
+                            <Grid Width="200" HorizontalAlignment="Left" >
+                                <Grid.ColumnDefinitions >
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="50" />
+                                    <ColumnDefinition Width="8" />
+                                    <ColumnDefinition Width="50" />
+                                </Grid.ColumnDefinitions>
+                                <Button Width="50" Height="50" Grid.Column="1" x:Name="CanEditButton" ToolTipService.ToolTip="Edit" Click="CanEditButton_Click" HorizontalContentAlignment="Center" HorizontalAlignment="Right">
+                                    <Image Source="../Assets/icon_edit.png" x:Name="img_edit" HorizontalAlignment="Center"/>
+                                </Button>
+                                <Button Width="50" Height="50" Grid.Column="3" x:Name="CanDeleteButton" ToolTipService.ToolTip="Edit" Click="CanDeleteButton_Click" HorizontalContentAlignment="Center" HorizontalAlignment="Right">
+                                    <Image Source="../Assets/icon_trash.png" x:Name="img_delete" HorizontalAlignment="Center"/>
+                                </Button>
+                            </Grid>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackPanel>
+    </Grid>
+</Page>

@@ -1,0 +1,44 @@
+﻿<Page
+    x:Class="EnergyScanVerwaltung.Login"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:EnergyScanVerwaltung"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:muxc="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:models="using:EnergyScanVerwaltung.Models"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Grid>
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                       
+                    </VisualState.StateTriggers>
+
+                    <VisualState.Setters>
+                       
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top">
+        <TextBlock x:Name="LoginTitle" Text="Welcome to EnergyCan Desktop" FontSize="32" Margin="0,24,0,48"/>
+        
+        <StackPanel Orientation="Horizontal" >
+            <RadioButton GroupName="LoginRegister" Tag="login" TabIndex="10" IsChecked="True" Checked="LoginRegisterRadio_SelectionChanged">Login</RadioButton>
+            <RadioButton GroupName="LoginRegister" Tag="register" TabIndex="11" Checked="LoginRegisterRadio_SelectionChanged">Register</RadioButton>
+        </StackPanel>
+
+        <TextBox x:Name="Username" Header= "Username" TabIndex="0" Margin="0,24,0,0" MaxLength="32" Width="400" HorizontalAlignment="Left" InputScope="PersonalFullName"/>
+            <PasswordBox x:Name="Password" Header="Password" TabIndex="1" Margin="0,24,0,0" MaxLength="50" Width="400" HorizontalAlignment="Left" InputScope="Password" />
+            <TextBox x:Name="Email" Header="Email" Visibility="Collapsed" TabIndex="4" Margin="0,24,0,0" MaxLength="50" Width="400" HorizontalAlignment="Left" InputScope="EmailNameOrAddress" />
+        <TextBlock x:Name="Errorbox" Visibility="Collapsed" Margin="0,24,0,0" Width="400" HorizontalAlignment="Center" Foreground="Red" Text="" />
+        <StackPanel Orientation="Horizontal">
+        <Button x:Name="SubmitButton" Content="Login" TabIndex="2" Margin="0,24" Click="Login_Click" />
+            <ProgressBar x:Name="LoginProgressBar" Visibility="Collapsed" IsIndeterminate="True" Width="200" Margin="12,12,12,12" />
+        </StackPanel>
+    </StackPanel>
+    </Grid>
+</Page>

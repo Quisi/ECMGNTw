@@ -1,0 +1,84 @@
+﻿<Page
+    x:Class="EnergyScanVerwaltung.Root"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:EnergyScanVerwaltung"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:models="using:EnergyScanVerwaltung.Models"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Grid>
+        <NavigationView x:Name="NavView"
+                         Loaded="NavView_Loaded"
+                         ItemInvoked="NavView_ItemInvoked"
+                         BackRequested="NavView_BackRequested">
+            <NavigationView.MenuItems>
+                <NavigationViewItem Tag="home" Icon="Home" Content="Home"/>
+                <NavigationViewItemSeparator/>
+                <NavigationViewItemHeader x:Name="AppPages" Content="App Pages"/>
+                <NavigationViewItem Tag="appchangerequest" Content="Change Requests" Icon="Manage" />
+                <NavigationViewItem Tag="appcans" Content="Cans" Icon="Scan" />
+                <NavigationViewItemSeparator/>
+                <NavigationViewItemHeader x:Name="MainPagesHeader" Content="API Pages"/>
+                <NavigationViewItem Tag="barcodes" Content="Barcodes" Icon="Bookmarks"/>
+                <NavigationViewItem Tag="cans" Content="Cans" Icon="FourBars" />
+                <NavigationViewItem Tag="countrys" Content="Countrys" Icon="World"/>
+                <NavigationViewItem Tag="groups" Icon="Audio" Content="Groups"/>
+                <NavigationViewItem Tag="manufacturers" Icon="SelectAll" Content="Manufacturers"/>
+                <NavigationViewItem Tag="policys" Content="Policys" Icon="Bullets"/>
+                <NavigationViewItem Tag="stati" Content="Stati">
+                    <NavigationViewItem.Icon>
+                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xEB3C;"/>
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+                <NavigationViewItem Tag="tags" Content="Tags">
+                    <NavigationViewItem.Icon>
+                        <BitmapIcon UriSource="/Assets/icon_edit.png"/>
+                    </NavigationViewItem.Icon>
+
+                </NavigationViewItem>
+                <NavigationViewItem Tag="tastes" Content="Tastes">
+                    <NavigationViewItem.Icon>
+                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE7FC;"/>
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+                <NavigationViewItem Tag="changerequests" Icon="Audio" Content="ChangeRequests" />
+
+            </NavigationView.MenuItems>
+
+            <!--<NavigationView.AutoSuggestBox>
+                 See AutoSuggestBox documentation for
+                 more info about how to implement search. 
+                <AutoSuggestBox x:Name="NavViewSearchBox" QueryIcon="Find" Width="200"
+                TextChanged="AutoSuggestBox_TextChanged"
+                QuerySubmitted="AutoSuggestBox_QuerySubmitted"
+                SuggestionChosen="AutoSuggestBox_SuggestionChosen"/>
+            </NavigationView.AutoSuggestBox>
+            -->
+            <ScrollViewer HorizontalScrollMode="Auto" HorizontalScrollBarVisibility="Visible">
+                <Frame x:Name="ContentFrame" Padding="12,0,12,24" IsTabStop="True"
+                   NavigationFailed="ContentFrame_NavigationFailed"/>
+            </ScrollViewer>
+        </NavigationView>
+
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger
+                        MinWindowWidth="{x:Bind NavViewCompactModeThresholdWidth}"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <!-- Remove the next 3 lines for left-only navigation. 
+                    <Setter Target="NavView.PaneDisplayMode" Value="Top"/>
+                    <Setter Target="NavViewSearchBox.Width" Value="200"/>
+                    <Setter Target="MainPagesHeader.Visibility" Value="Collapsed"/>-->
+                        <!-- Leave the next line for left-only navigation. -->
+                        <Setter Target="ContentFrame.Padding" Value="24,0,24,24"/>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+    </Grid>
+</Page>

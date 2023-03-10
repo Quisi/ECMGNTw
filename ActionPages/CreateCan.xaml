@@ -1,0 +1,31 @@
+﻿<Page
+    x:Class="EnergyScanVerwaltung.ActionPages.CreateCan"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:EnergyScanVerwaltung.ActionPages"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top">
+            <TextBlock x:Name="title" FontSize="48" Text="Add Can" MinWidth="675" />
+            <TextBox x:Name="barcode" Text="{x:Bind BarcodeDTO.Name, Mode=TwoWay}" Header="Barcode" PlaceholderText="0123456789123" VerticalContentAlignment="Center" MinWidth="100" Margin="12,0"/>
+            <TextBox x:Name="manuf" Text="{x:Bind ManufacturerDTO.Name, Mode=TwoWay}" Header="Manufacturer" PlaceholderText="Monster Energy GmbH?" VerticalContentAlignment="Center" MinWidth="100" Margin="12,0"/>
+            <TextBox x:Name="taste" Text="{x:Bind TasteDTO.Name, Mode=TwoWay}" Header="Taste" PlaceholderText="Punch mixxd" VerticalContentAlignment="Center" MinWidth="100" Margin="12,0"/>
+            <TextBox x:Name="coun" Text="{x:Bind CountryDTO.Name, Mode=TwoWay}" Header="Country" PlaceholderText="DE?" VerticalContentAlignment="Center" MinWidth="100" Margin="12,0"/>
+            <TextBox x:Name="conta" Text="{x:Bind CanDTO.Contentamount, Mode=TwoWay}" Header="Contentamount" PlaceholderText="500ml" VerticalContentAlignment="Center" MinWidth="100" Margin="12,0"/>
+            <TextBox x:Name="coff" Text="{x:Bind CanDTO.Coffeincontent, Mode=TwoWay}" Header="Coffeincontent" PlaceholderText="32mg/100ml" VerticalContentAlignment="Center" MinWidth="100" Margin="12,0"/>
+            <TextBox x:Name="clos" Text="{x:Bind CanDTO.Closure, Mode=TwoWay}" Header="Closure" PlaceholderText="(standard, reusable, turnable)" VerticalContentAlignment="Center" MinWidth="100" Margin="12,0"/>
+            <TextBox x:Name="mhde" Text="{x:Bind CanDTO.Mhd, Mode=TwoWay}" Header="MHD" PlaceholderText="08/23" VerticalContentAlignment="Center" MinWidth="100" Margin="12,0"/>
+            <CheckBox x:Name="depo" Content="Deposit (German 'Pfand')" IsChecked="{x:Bind CanDTO.Deposit, Mode=TwoWay}" Margin="12,0" />
+            <CheckBox x:Name="dama" Content="Damaged" IsChecked="{x:Bind CanDTO.Damaged, Mode=TwoWay}" Margin="12,0" />
+            <TextBox x:Name="desc" Text="{x:Bind CanDTO.Description, Mode=TwoWay}" Header="Description" PlaceholderText="(süßlich, leichter cola geschmack, ...)" MinHeight="172" TextWrapping="Wrap" AcceptsReturn="True" ScrollViewer.VerticalScrollBarVisibility="Auto" VerticalContentAlignment="Center" MinWidth="300" Margin="12,0"/>
+            <Button Content="create" MinHeight="32" MinWidth="40" Margin="12" Padding="0" HorizontalAlignment="Right" 
+                    Click="Create_ClickAsync">
+
+            </Button>
+        </StackPanel>
+    </Grid>
+</Page>

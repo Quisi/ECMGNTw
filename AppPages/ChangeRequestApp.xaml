@@ -1,0 +1,78 @@
+﻿<Page
+    x:Class="EnergyScanVerwaltung.AppPages.ChangeRequestApp"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:EnergyScanVerwaltung"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:dtos="using:EnergyScanVerwaltung.DTOs"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    ScrollViewer.HorizontalScrollBarVisibility="Visible" ScrollViewer.HorizontalScrollMode="Enabled">
+
+    <Grid ScrollViewer.HorizontalScrollMode="Enabled" ScrollViewer.BringIntoViewOnFocusChange="True" ScrollViewer.HorizontalScrollBarVisibility="Visible">
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top">
+            <TextBlock x:Name="BarcodeTitle" Text="ChangeRequests" FontSize="48" MinWidth="675" />
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,32,12,0">
+                <TextBlock x:Name="BarcodeAdd" Text="Add" HorizontalAlignment="Right" VerticalAlignment="Center" />
+                <Button Width="50" Height="50" x:Name="BarcodeAddButton" Margin="12,0,0,0" ToolTipService.ToolTip="Add" Click="BarcodeAddButton_Click"  HorizontalContentAlignment="Center" HorizontalAlignment="Right" >
+                    <Image Source="../Assets/icon_add.png" x:Name="img_add" HorizontalAlignment="Center"/>
+                </Button>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,12,0,0" BorderBrush="Silver" BorderThickness="0,0,0,1">
+                <TextBlock Name="chridheader" Text="Id" Margin="12" MinWidth="300" TextAlignment="Center" FontWeight="Bold" TextWrapping="Wrap" />
+                <TextBlock Name="chrtableheader" Text="Table" Margin="12" MinWidth="100" TextAlignment="Center" FontWeight="Bold" TextWrapping="Wrap" />
+                <TextBlock Name="chrfieldh" Text="Field" Margin="12" MinWidth="100" TextAlignment="Center" FontWeight="Bold" TextWrapping="Wrap" />
+                <TextBlock Name="chrpkfieldh" Text="PkField" Margin="12" MinWidth="100" TextAlignment="Center" FontWeight="Bold" TextWrapping="Wrap" />
+                <TextBlock Name="chrpkh" Text="Pk" Margin="12" MinWidth="100" TextAlignment="Center" FontWeight="Bold" TextWrapping="Wrap" />
+                <TextBlock Name="chruseridh" Text="UserId" Margin="12" MinWidth="100" TextAlignment="Center" FontWeight="Bold" TextWrapping="Wrap" />
+                <TextBlock Name="chrtimestamph" Text="Timestamp" Margin="12" MinWidth="100" TextAlignment="Center" FontWeight="Bold" TextWrapping="Wrap" />
+                <TextBlock Name="chrstateidh" Text="StateId" Margin="12" MinWidth="100" TextAlignment="Center" FontWeight="Bold" TextWrapping="Wrap" />
+                <TextBlock Name="chrchangeold" Text="OldValue" Margin="12" MinWidth="100" TextAlignment="Center" FontWeight="Bold" TextWrapping="Wrap" />
+                <TextBlock Name="chrchangenew" Text="NewValue" Margin="12" MinWidth="100" TextAlignment="Center" FontWeight="Bold" TextWrapping="Wrap" />
+                <TextBlock Name="chrcreationDate" Width="100" Text="creationDate" Margin="12" TextAlignment="Center" IsTextSelectionEnabled="True"/>
+                <TextBlock Name="chrchangedLast" Width="100" Text="changedLast" Margin="12" TextAlignment="Center" IsTextSelectionEnabled="True"/>
+                <TextBlock Name="chrchangedBy" Width="100" Text="changedBy" Margin="12" TextAlignment="Center" IsTextSelectionEnabled="True"/>
+                <TextBlock Name="chrtoolsheader" Text="Tools" Margin="0,12" MinWidth="200" TextAlignment="Center" FontWeight="Bold" />
+            </StackPanel>
+            <ListView x:Name="XListview" ItemsSource="{x:Bind ChangeRequests}" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="dtos:ChangeRequestDTO">
+                        <StackPanel Orientation="Horizontal" Margin="0,8">
+                            <TextBlock Name="chrid" Width="300" Text="{x:Bind id}" Margin="12" TextAlignment="Center" TextWrapping="Wrap" IsTextSelectionEnabled="True"/>
+                            <TextBlock Name="chrtable" Width="100" Text="{x:Bind table}" Margin="12" TextAlignment="Center" IsTextSelectionEnabled="True"/>
+                            <TextBlock Name="chrfield" Width="100" Text="{x:Bind field}" Margin="12" TextAlignment="Center" IsTextSelectionEnabled="True"/>
+                            <TextBlock Name="chrpkfield" Width="100" Text="{x:Bind pkField}" Margin="12" TextAlignment="Center" IsTextSelectionEnabled="True"/>
+                            <TextBlock Name="chrpk" Width="100" Text="{x:Bind pk}" Margin="12" TextAlignment="Center" IsTextSelectionEnabled="True"/>
+                            <TextBlock Name="chruserid" Width="100" Text="{x:Bind user.Username}" Margin="12" TextAlignment="Center" IsTextSelectionEnabled="True"/>
+                            <TextBlock Name="chrtimestamp" Width="100" Text="{x:Bind timestamp}" Margin="12" TextAlignment="Center" IsTextSelectionEnabled="True"/>
+                            <TextBlock Name="chrstateid" Width="100" Text="{x:Bind status.Name}" Margin="12" TextAlignment="Center" IsTextSelectionEnabled="True"/>
+                            <TextBlock Name="chrchangeold" Width="100" Text="{x:Bind changeoldValue}" Margin="12" TextAlignment="Center" IsTextSelectionEnabled="True"/>
+                            <TextBlock Name="chrchangenew" Width="100" Text="{x:Bind changenewValue}" Margin="12" TextAlignment="Center" IsTextSelectionEnabled="True"/>
+                            <TextBlock Name="chrcreationDate" Width="100" Text="{x:Bind creationDate}" Margin="12" TextAlignment="Center" IsTextSelectionEnabled="True"/>
+                            <TextBlock Name="chrchangedLast" Width="100" Text="{x:Bind changedLast}" Margin="12" TextAlignment="Center" IsTextSelectionEnabled="True"/>
+                            <TextBlock Name="chrchangedBy" Width="100" Text="{x:Bind changedBy.Username}" Margin="12" TextAlignment="Center" IsTextSelectionEnabled="True"/>
+                            <Grid Width="200" HorizontalAlignment="Left" >
+                                <Grid.ColumnDefinitions >
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="50" />
+                                    <ColumnDefinition Width="8" />
+                                    <ColumnDefinition Width="50" />
+                                </Grid.ColumnDefinitions>
+                                <Border Background="Red" Grid.Column="1">
+                                    <Button Width="50" Height="50" Grid.Column="1" Content="no" x:Name="Decline" ToolTipService.ToolTip="Dismiss change" Click="Decline_Click" HorizontalContentAlignment="Center" HorizontalAlignment="Right">
+                                    </Button>
+                                </Border>
+                                <Border Background="Green" Grid.Column="3">
+                                    <Button Width="50" Height="50" Grid.Column="3" Content="yes" x:Name="Accept" ToolTipService.ToolTip="Accept change" Click="Accept_Click" HorizontalContentAlignment="Center" HorizontalAlignment="Right">
+                                    </Button>
+                                </Border>
+                            </Grid>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackPanel>
+    </Grid>
+</Page>
